@@ -24,25 +24,26 @@ describe('viewing all of the stylists', {:type => :feature}) do
   end
 end
 
-# describe('seeing details for a single stylist', {:type => :feature}) do
-#   it('allows a user to click a stylist to see the clients and details for it') do
-#     test_stylist = Stylist.new({:name => 'Sharon', :id => 1})
-#     test_stylist.save()
-#     test_client = Client.new({:title => "Jeff", :stylist_id => test_stylist.id()})
-#     test_client.save()
-#     visit('/stylists')
-#     click_link(test_stylist.name())
-#     expect(page).to have_content(test_client.title())
-#   end
-# end
-#
-# describe('adding clients to a stylist', {:type => :feature}) do
-#   it('allows a user to add a client to a stylist') do
-#     test_stylist = Stylist.new({:name => 'Sharon', :id => 1})
-#     test_stylist.save()
-#     visit("/stylists/#{test_stylist.id()}")
-#     fill_in("title", {:with => "Jeff"})
-#     click_button("Add client")
-#     expect(page).to have_content("Success")
-#   end
-# end
+describe('seeing details for a single stylist', {:type => :feature}) do
+  it('allows a user to click a stylist to see the clients and details for it') do
+    test_stylist = Stylist.new({:name => 'Augustus Succesus', :phone => '5038696422', :id => 1})
+    test_stylist.save()
+    test_client = Client.new({:name => 'Socrates the Plato', :phone => '5032225555', :client_id => test_stylist.id()})
+    test_client.save()
+    visit('/stylists')
+    click_link(test_stylist.name())
+    expect(page).to have_content(test_client.name())
+  end
+end
+
+describe('adding clients to a stylist', {:type => :feature}) do
+  it('allows a user to add a client to a stylist') do
+    test_stylist = Stylist.new({:name => 'Augustus Succesus', :phone => '5038696422', :id => 1})
+    test_stylist.save()
+    visit("/stylists/#{test_stylist.id()}")
+    fill_in("name", {:with => "Socrates the Plato"})
+    fill_in('phone', :with =>'5031114444')
+    click_button("Add client")
+    expect(page).to have_content("Success")
+  end
+end
