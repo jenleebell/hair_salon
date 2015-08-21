@@ -20,7 +20,7 @@
   <h3>Add a client to <%= @stylist.name() %> </h3>
 
   <form action="/clients" method="post">
-    <input id="stylist_id" name="stylist_id" type="hidden" value="<%= @stylist.id() %>">
+    <input id="client_id" name="client_id" type="hidden" value="<%= @stylist.id() %>">
 
     <label for="name">Name of the client:</label>
     <input id="name" name="name" type="text">
