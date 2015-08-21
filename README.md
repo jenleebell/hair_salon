@@ -1,4 +1,4 @@
-# SalonNow
+# The Hair Salon
 
 ##### An app that helps a salon owner manage their salon, August 21, 2015
 
@@ -16,7 +16,7 @@ This web app will allow a salon owner to manage their stylists as well as the cl
     * CREATE DATABASE hair_salon;
     * \c hair_salon;
     * CREATE TABLE stylists (id serial PRIMARY KEY, name varchar, phone char(10));
-    * CREATE TABLE clients (id serial PRIMARY KEY, name varchar, phone varchar, client_id int);
+    * CREATE TABLE clients (id serial PRIMARY KEY, name varchar, phone char(10), client_id int);
 * In terminal, run "ruby app.rb" in the root folder
 * Enjoy managing that salon!
 
