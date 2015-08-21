@@ -61,4 +61,14 @@ describe(Stylist) do
     end
   end
 
+  describe(".find") do
+    it("returns a stylist by thier ID") do
+      test_stylist = Stylist.new({:name => "Han Solo", :phone => "5038675309", :id => nil})
+      test_stylist.save()
+      test_stylist2 = Stylist.new(:name => "C3PO", :phone => "5032224444", :id => nil)
+      test_stylist2.save()
+      expect(Stylist.find(test_stylist2.id())).to(eq(test_stylist2))
+    end
+  end
+
 end
