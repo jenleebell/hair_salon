@@ -20,7 +20,7 @@ class Client
   end
 
   define_method(:save) do
-    result = DB.exec("INSERT INTO clients (name, phone, client_id) VALUES ('#{@name}', '#{@phone}', #{@client_id});")
+    DB.exec("INSERT INTO clients (name, phone, client_id) VALUES ('#{@name}', '#{@phone}', #{@client_id});")
   end
 
   define_method(:==) do |another_client|

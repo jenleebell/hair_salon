@@ -16,7 +16,7 @@ describe(Stylist) do
   end
 
   describe('#save') do
-    it('adds an stylist to the array of saved stylists') do
+    it('adds an stylist to the database') do
       test_stylist = Stylist.new({:name => "Han Solo", :phone => "5038675309", :id => 1})
       test_stylist.save()
       expect(Stylist.all()).to(eq([test_stylist]))
@@ -48,5 +48,17 @@ describe(Stylist) do
      expect(Stylist.all()).to(eq([]))
      end
    end
+
+   describe("#clients") do
+    it("returns an array of clients for that stylist") do
+      test_stylist = Stylist.new({:name => "Han Solo", :phone => "5038675309", :id => nil})
+      test_stylist.save()
+      test_client1 = Client.new({:name => "Chewbacca", :phone => "9713335555", :client_id => test_stylist.id()})
+      test_client1.save()
+      test_client2 = Client.new({:name => "Princess Leia", :phone => "5038696400", :client_id => test_stylist.id()})
+      test_client2.save()
+      expect(test_stylist.clients()).to(eq([test_client1, test_client2]))
+    end
+  end
 
 end
