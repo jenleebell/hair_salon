@@ -40,4 +40,13 @@ describe(Stylist) do
     end
   end
 
+  describe("#delete") do
+   it('deletes a stylist from the database') do
+     stylist = Stylist.new({:name => "Han Solo", :phone => "5038675309", :id => 1})
+     stylist.save()
+     stylist.delete()
+     expect(Stylist.all()).to(eq([]))
+     end
+   end
+
 end
