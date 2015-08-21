@@ -4,7 +4,7 @@ describe(Client) do
 
   describe('#name') do
     it("returns the name of the client") do
-      test_client = Client.new({:name => "Chewbacca", :phone => "9713335555", :id => nil})
+      test_client = Client.new({:name => "Chewbacca", :phone => "9713335555", :stylist_id => 1, :id => nil})
       expect(test_client.name()).to(eq("Chewbacca"))
     end
   end
@@ -17,7 +17,7 @@ describe(Client) do
 
   describe('#save') do
     it('adds an client to the array of saved clients') do
-      test_client = Client.new({:name => "Chewbacca", :phone => "9713335555", :id => 1})
+      test_client = Client.new({:name => "Chewbacca", :phone => "9713335555", :stylist_id => 1, :id => nil})
       test_client.save()
       expect(Client.all()).to(eq([test_client]))
     end
@@ -25,24 +25,24 @@ describe(Client) do
 
   describe("#==") do
     it("is the same client if it has the same name") do
-      test_client1 = Client.new({:name => "Chewbacca", :phone => "9713335555", :id => nil})
-      test_client2 = Client.new({:name => "Chewbacca", :phone => "9713335555", :id => nil})
+      test_client1 = Client.new({:name => "Chewbacca", :phone => "9713335555", :stylist_id => 1, :id => nil})
+      test_client2 = Client.new({:name => "Chewbacca", :phone => "9713335555", :stylist_id => 1, :id => nil})
       expect(test_client1).to(eq(test_client2))
     end
   end
 
   describe('#update') do
     it ("lets you update clients in the database") do
-      client = Client.new({:name => "Chewbacca", :phone => "9713335555", :id => 1})
+      client = Client.new({:name => "Chewbacca", :phone => "9713335555", :stylist_id => 1, :id => nil})
       client.save()
-      client.update({:name => "Chewy", :phone => "9713335555"})
+      client.update({:name => "Chewy", :phone => "9713335555", :stylist_id => 1})
       expect(client.name()).to(eq("Chewy"))
     end
   end
 
   describe("#delete") do
    it('deletes a client from the database') do
-     client = Client.new({:name => "Chewbacca", :phone => "9713335555", :id => 1})
+     client = Client.new({:name => "Chewbacca", :phone => "9713335555", :stylist_id => 1, :id => nil})
      client.save()
      client.delete()
      expect(Client.all()).to(eq([]))
