@@ -1,17 +1,26 @@
-<h1>Update the <%=@stylist.name() %> Stylist </h1>
+<h1>The Hair Salon :: </h1><h2> Update <%=@stylist.name() %>'s Information</h2>
+<br>
 
+<h3>Enter in their update name or number below:
+<br>
 <form action="/stylists/<%= @stylist.id() %>" method="post">
   <input name="_method" type="hidden" value="patch">
+  <input id="name" name="name" type="text" placeholder="i.e. Augustus Succesus">
+  <input id="phone" name="phone" type="text" placeholder="i.e. 5034567890">
 
-  <label for="name">Rename your Stylist:</label>
-  <input id="name" name="name" type="text">
-  <input id="phone" name="phone" type="text">
-
-  <button type="submit">Update</button>
+  <button type="submit" class="btn-warning">Update</button>
 </form>
+
 
 <form action="/stylists/<%= @stylist.id() %>" method="post">
   <input name="_method" type="hidden" value="delete">
-
-  <button type="submit">Delete Stylist</button>
+  <button type="submit" class="btn-warning">Delete Stylist</button>
 </form>
+</h3>
+<hr>
+<center>
+    <a href="/"><button class="btn-danger">Home</button></a>
+    <a href="/stylists"><button class="btn-danger">View All Stylists</button></a>
+    <a href="/stylists/new"><button class="btn-danger">Add New Stylist</button></a>
+    </div>
+  </center>

@@ -60,4 +60,5 @@ delete("/stylists/:id") do
   @stylist = Stylist.find(params.fetch("id").to_i())
   @stylist.delete()
   @stylists = Stylist.all()
+  erb(:success)
 end

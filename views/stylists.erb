@@ -1,16 +1,30 @@
-<h1>Your Current Stylists</h1>
+<center>
+  <h1>The Hair Salon :: Your Stylists</h1>
 
+<br>
+<h2>
+  Click on your stylist name below to view their information.
+<br>
+<br>
 <% if @stylists.any?() %>
-<h3>Here are your stylists:</h3>
-
 <ul>
   <% @stylists.each() do |stylist| %>
-  <li><a href="/stylists/<%= stylist.id()%>"><%= stylist.name() %></a> </li>
+  <ol><a href="/stylists/<%= stylist.id()%>"><%= stylist.name() %></a> </ol>
   <% end %>
 </ul>
 
 <% else %>
 
-<p>There are no stylists yet!</p>
+<p>There are no stylists in the system.. yet!</p>
 
 <% end %>
+</h2>
+</center>
+
+<hr>
+<center>
+  <div class="container">
+    <a href="/"><button class="btn-danger">Home</button></a>
+    <a href="/stylists/new"><button class="btn-danger">Add New Stylist</button></a>
+  </div>
+</center>

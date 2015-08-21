@@ -1,42 +1,43 @@
-<h1><%= @stylist.name() %></h1>
+<center><h1>Your Stylist :: <%= @stylist.name() %></h1>
+<h2>Phone Number: <%= @stylist.phone() %></h2>
+<div class="container">
+  <p><a href="/stylists/<%= @stylist.id() %>/edit"><button class="btn-warning">Edit <%= @stylist.name() %>'s' information</button></a></p>
+</center>
+<hr>
 
 <% if @stylist.clients().any?() %>
-<h3>Here are all the clients for this stylist:</h3>
+<h3>Here are all the clients for this stylist:
+<br>
 
 <ul>
   <% @stylist.clients().each() do |client| %>
-  <li><%= client.name() %> </li>
+  <li><%= client.name() %> :: <%= client.phone() %></li>
   <% end %>
 </ul>
+</h3>
 
 <% else %>
-<p>There are no clients for this stylist!</p>
+<h2><p>There are no clients for this stylist!</p></h2>
 <% end %>
 
-<div class="container">
-  <a href="/"><button class="btn">Home</a>
+<h3>Enter in their name and number below:<br>
+
+<form action="/clients" method="post">
+  <input id="client_id" name="client_id" type="hidden" value="<%= @stylist.id() %>">
+
+  <input id="name" name="name" type="text" placeholder="i.e. Maximillian Victorius III">
+  <input id="phone" name="phone" type="text" placeholder="i.e. 8082225555">
+
+  <button type="submit">Add client</button>
+</form>
+
+</h3>
+<br>
+
+<hr>
+<center>
+  <a href="/"><button class="btn-danger">Home</button></a>
+  <a href="/stylists"><button class="btn-danger">View All Stylists</button></a>
+  <a href="/stylists/new"><button class="btn-danger">Add New Stylist</button></a>
   </div>
-
-  <h3>Add a client to <%= @stylist.name() %> </h3>
-
-  <form action="/clients" method="post">
-    <input id="client_id" name="client_id" type="hidden" value="<%= @stylist.id() %>">
-
-    <label for="name">Name of the client:</label>
-    <input id="name" name="name" type="text">
-    <input id="phone" name="phone" type="text">
-
-    <button type="submit">Add client</button>
-  </form>
-
-  <hr>
-
-  <div class="container">
-    <a href="/">Home</a>
-    <a href="/stylists">View All Lists</a>
-    <a href="/stylists/new">Add New List</a>
-    <a href="/stylists/new">Add New client</a>
-  </div>
-
-  <p><a href="/stylists/<%= @stylist.id() %>/edit">Edit <%= @stylist.name() %> stylist</a></p>
-  <p><a href="/">Return to Main Page</a></p>
+</center>
